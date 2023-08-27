@@ -1,4 +1,5 @@
-# A simple pingpong project
+# A simple pingpong project, 1st Version.
+# @karim adel
 
 import turtle
 
