@@ -57,25 +57,25 @@ result.hideturtle()
 
 
 # functions
-def rack1_up():  # A function to move the racket up
+def rack1_up():  # A function to move the racket1 up
     y = racket1.ycor()   # getting the y coordinates
-    y += 30      # increasing the y by 30
+    y += 30      # increasing the y by 30, the amount that the racket will be moving
     racket1.sety(y)   # updating y with the new value
 
 
-def rack1_down():   # A function to move the racket down
+def rack1_down():   # A function to move the racket1 down
     y = racket1.ycor()
     y -= 30
     racket1.sety(y)
 
 
-def rack2_up():
+def rack2_up():    # A function to move the racket2 up
     y = racket2.ycor()
     y += 30
     racket2.sety(y)
 
 
-def rack2_down():
+def rack2_down():   # A function to move the racket2 down
     y = racket2.ycor()
     y -= 30
     racket2.sety(y)
@@ -110,7 +110,7 @@ while True:
         score1 += 1    # increasing the score1 by one
         result.clear()  # clearing the result text from the screen
         score.clear()   # clearing the score text from the screen
-        if score1 == 3: # checking if the score1 reach 3, then
+        if score1 == 3: # checking if the score1 reach 3, then player 1 wins, and reset the game score.
             result.write("Player1 Won!", align="center", font="Carrier")
             score1 = 0
             score2 = 0
@@ -118,7 +118,7 @@ while True:
 
         score.write("Player1: {}, Player2: {}".format(score1,score2), align="center", font="Carrier")
 
-    if ball.xcor() < -430:
+    if ball.xcor() < -430:     # checking if the ball is hitting the left border
         ball.goto(0, 0)
         ball.dx *= -1
         score2 += 1
@@ -132,12 +132,14 @@ while True:
 
         score.write("Player1: {}, Player2: {}".format(score1, score2), align="center", font="Carrier")
 
-    if (racket1.xcor() + 10 > ball.xcor() > racket1.xcor()) and (racket1.ycor() + 40 >= ball.ycor() >= racket1.ycor() - 40):
+    if (racket1.xcor() + 10 > ball.xcor() > racket1.xcor()) and    # cheking if the ball hits the racket1 then make it go back
+    (racket1.ycor() + 40 >= ball.ycor() >= racket1.ycor() - 40):
 
         ball.setx(-340)
         ball.dx *= -1
 
-    if (racket2.xcor() + 10 > ball.xcor() > racket2.xcor() - 10) and (racket2.ycor() + 40 >= ball.ycor() >= racket2.ycor() - 40):
+    if (racket2.xcor() + 10 > ball.xcor() > racket2.xcor() - 10) and    # cheking if the ball hits the racket2 then make it go back
+    (racket2.ycor() + 40 >= ball.ycor() >= racket2.ycor() - 40):
 
         ball.setx(340)
         ball.dx *= -1
